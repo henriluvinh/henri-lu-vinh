@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0d0d" />
+  <title>Henri Lu Vinh — Founder · Finance · Brussels</title>
+  <meta name="description" content="Henri Lu Vinh — Étudiant Solvay, fondateur de FuturWork, Valence IA & HLV Advisory. CFA Candidate. Brussels." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Henri Lu Vinh" />
+  <meta property="og:description" content="Founder · Risk & Compliance · AI & Finance · Brussels" />
+  <meta property="og:image" content="https://hlvadvisory.be/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hlvadvisory.be" />
+
+  <!-- Fonts async -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:           #0d0d0d;
+      --bg-card:      #131313;
+      --bg-card-hover:#161616;
+      --ivory:        #f0e8d5;
+      --ivory-muted:  #a89880;
+      --gold:         #c9a84c;
+      --gold-dim:     rgba(201,168,76,0.18);
+      --gold-line:    rgba(201,168,76,0.45);
+      --border:       rgba(240,232,213,0.08);
+      --border-hover: rgba(201,168,76,0.5);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  7rem;
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+
+      --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      --transition-fast: 0.18s ease;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* hide default cursor everywhere */
+    a, button { cursor: none; }
+
+    /* ─── CUSTOM CURSOR ──────────────────────────────────────── */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 14px; height: 14px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+      will-change: transform;
+    }
+    #cursor.hover {
+      width: 28px; height: 28px;
+      background-color: var(--gold-dim);
+    }
+
+    /* ─── SCROLLBAR ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-line); border-radius: 2px; }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: var(--space-sm) auto 0;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── FADE-IN STAGGER (CSS only) ────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s var(--transition) forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.25s; }
+    .fade-in:nth-child(3) { animation-delay: 0.4s; }
+    .fade-in:nth-child(4) { animation-delay: 0.55s; }
+    .fade-in:nth-child(5) { animation-delay: 0.7s; }
+    .fade-in:nth-child(6) { animation-delay: 0.85s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(13,13,13,0.92) 0%, transparent 100%);
+      backdrop-filter: blur(2px);
+    }
+
+    .nav-mono {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ivory);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ivory-muted);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle radial glow behind monogram */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .monogram {
+      font-family: var(--font-display);
+      font-size: clamp(96px, 18vw, 180px);
+      font-weight: 300;
+      color: var(--ivory);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      position: relative;
+    }
+
+    .monogram::after {
+      content: 'HLV';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--ivory) 40%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-top: var(--space-sm);
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.2rem auto;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-mono);
+      font-size: clamp(0.75rem, 2vw, 0.9rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      min-height: 1.4em;
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      margin-top: var(--space-sm);
+      font-size: 0.85rem;
+      color: var(--ivory-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-cta {
+      margin-top: var(--space-md);
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-outline {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      border: 1px solid var(--border-hover);
+      padding: 0.65rem 1.5rem;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+    .btn-outline:hover {
+      background-color: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.4;
+    }
+    .scroll-hint span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ─── SECTIONS COMMUNES ──────────────────────────────────── */
+    section {
+      padding: var(--space-xl) 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      color: var(--ivory);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── BADGES (wins) ──────────────────────────────────────── */
+    #about {
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .about-badge {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem var(--space-md);
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .about-badge::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform var(--transition);
+    }
+    .about-badge:hover { border-color: var(--border-hover); }
+    .about-badge:hover::before { transform: scaleY(1); }
+
+    .badge-icon {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .badge-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ivory);
+    }
+    .badge-sub {
+      font-size: 0.8rem;
+      color: var(--ivory-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── VENTURES ───────────────────────────────────────────── */
+    #ventures {
+      border-top: 1px solid var(--border);
+    }
+
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .venture-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.6rem var(--space-md);
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: background-color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .venture-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform var(--transition);
+    }
+
+    .venture-card:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+    .venture-card:hover::before { transform: scaleY(1); }
+
+    .venture-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .venture-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 0.4rem;
+    }
+
+    .venture-desc {
+      font-size: 0.82rem;
+      color: var(--ivory-muted);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .venture-url {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Arrow icon via CSS */
+    .venture-url::after {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 1px;
+      background: var(--gold);
+      position: relative;
+      top: -1px;
+      transition: width var(--transition-fast);
+    }
+    .venture-card:hover .venture-url::after { width: 22px; }
+
+    /* Stage badge */
+    .venture-stage-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ivory-muted);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact {
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: var(--space-md);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      background: var(--bg-card);
+      transition: border-color var(--transition), background-color var(--transition), transform var(--transition);
+    }
+    .contact-link:hover {
+      border-color: var(--border-hover);
+      background-color: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border-hover);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* SVG icons inlined as background via CSS */
+    .icon-mail   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/%3E%3C/svg%3E"); background-size: 18px; background-repeat: no-repeat; background-position: center; }
+    .icon-li     { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c9a84c'%3E%3Cpath d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'/%3E%3Crect x='2' y='9' width='4' height='12'/%3E%3Ccircle cx='4' cy='4' r='2'/%3E%3C/svg%3E"); background-size: 17px; background-repeat: no-repeat; background-position: center; }
+    .icon-ig     { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' ry='5'/%3E%3Cpath d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'/%3E%3Cline x1='17.5' y1='6.5' x2='17.51' y2='6.5'/%3E%3C/svg%3E"); background-size: 18px; background-repeat: no-repeat; background-position: center; }
+    .icon-map    { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E"); background-size: 18px; background-repeat: no-repeat; background-position: center; }
+
+    .contact-info { display: flex; flex-direction: column; }
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .contact-value {
+      font-size: 0.82rem;
+      color: var(--ivory);
+      margin-top: 0.15rem;
+    }
+
+    /* ─── ACCORDÉON RESSOURCES ───────────────────────────────── */
+    #ressources {
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-intro {
+      font-size: 0.88rem;
+      color: var(--ivory-muted);
+      margin-bottom: var(--space-md);
+      max-width: 520px;
+    }
+
+    .accordion {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .accordion-item:last-child { border-bottom: none; }
+
+    .accordion-trigger {
+      width: 100%;
+      background: var(--bg-card);
+      border: none;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      cursor: none;
+      transition: background-color var(--transition-fast);
+    }
+    .accordion-trigger:hover { background-color: var(--bg-card-hover); }
+
+    .acc-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--ivory);
+    }
+    .acc-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--ivory-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-left: 1rem;
+    }
+
+    .acc-chevron {
+      width: 18px; height: 18px;
+      border: 1px solid var(--gold-line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+    .acc-chevron::after {
+      content: '';
+      display: block;
+      width: 5px; height: 5px;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      transform: rotate(45deg) translate(-1px, -1px);
+      transition: transform var(--transition);
+    }
+
+    .accordion-trigger[aria-expanded="true"] .acc-chevron { transform: rotate(180deg); }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      background: var(--bg);
+    }
+    .accordion-body.open { max-height: 200px; }
+
+    .accordion-content {
+      padding: 0.8rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .res-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ivory-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .res-link::before {
+      content: '→';
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+    .res-link:hover {
+      color: var(--ivory);
+      border-bottom-color: var(--gold-line);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: var(--space-md) 0 var(--space-lg);
+      text-align: center;
+    }
+
+    .footer-mono {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ivory);
+      opacity: 0.06;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-loc {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--ivory-muted);
+      margin-top: 0.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .about-grid,
+      .ventures-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .venture-card { padding: 1.2rem; }
+      .hero-cta { flex-direction: column; align-items: center; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .ventures-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1441px) {
+      .container { max-width: 1140px; }
+    }
+
+    /* ─── SELECTION ──────────────────────────────────────────── */
+    ::selection {
+      background: var(--gold);
+      color: var(--bg);
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav aria-label="Navigation principale">
+  <a href="#hero" class="nav-mono" aria-label="Retour au haut">HLV</a>
+  <ul class="nav-links" role="list">
+    <li><a href="#ventures">Ventures</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#ressources">Ressources</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════════ HERO -->
+<section id="hero" aria-label="Introduction">
+  <div class="fade-in monogram" aria-hidden="true">HLV</div>
+
+  <h1 class="fade-in hero-name">Henri Lu Vinh</h1>
+
+  <div class="hero-divider fade-in" aria-hidden="true"></div>
+
+  <p class="fade-in hero-tagline" id="tagline" aria-live="polite" aria-label="Rôle actuel">
+    Founder · Risk &amp; Compliance
+  </p>
+
+  <p class="fade-in hero-sub">
+    Solvay Brussels School · CFA Candidate · Brussels, BE
+  </p>
+
+  <div class="scroll-hint fade-in" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ À PROPOS / ACHIEVEMENTS -->
+<section id="about" aria-label="Réalisations">
+  <div class="container">
+    <p class="section-label">Parcours</p>
+    <h2 class="section-title">Étudiant &amp; Entrepreneur</h2>
+
+    <div class="about-grid">
+      <div class="about-badge">
+        <p class="badge-icon">Prix · 2024</p>
+        <p class="badge-title">BlackRock ETF Business Case</p>
+        <p class="badge-sub">1er prix — stratégie ETF & allocation d'actifs</p>
+      </div>
+      <div class="about-badge">
+        <p class="badge-icon">Prix · 2024</p>
+        <p class="badge-title">Rothschild Asset Allocation Challenge</p>
+        <p class="badge-sub">Gagnant — gestion de portefeuille multi-actifs</p>
+      </div>
+      <div class="about-badge">
+        <p class="badge-icon">Accréditation</p>
+        <p class="badge-title">CFA Level I Candidate</p>
+        <p class="badge-sub">CFA Institute — Finance &amp; Investissement</p>
+      </div>
+      <div class="about-badge">
+        <p class="badge-icon">Club · Solvay</p>
+        <p class="badge-title">Solvay Finance Club</p>
+        <p class="badge-sub">Fondateur &amp; Head of Networking — Finance Tours Luxembourg</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ VENTURES -->
+<section id="ventures" aria-label="Ventures et projets">
+  <div class="container">
+    <p class="section-label">Ventures</p>
+    <h2 class="section-title">Projets &amp; Entreprises</h2>
+
+    <div class="ventures-grid">
+
+      <!-- FuturWork -->
+      <a
+        href="https://futur-work.com"
+        class="venture-card fade-in"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="FuturWork — Cabinet de conseil & staffing, ouvre dans un nouvel onglet"
+      >
+        <p class="venture-tag">Conseil · Staffing</p>
+        <p class="venture-name">FuturWork</p>
+        <p class="venture-desc">
+          Cabinet de conseil &amp; staffing spécialisé Risk &amp; Compliance.
+          Accompagnement des entreprises dans leur transformation réglementaire.
+        </p>
+        <p class="venture-url">futur-work.com</p>
+      </a>
+
+      <!-- Valence IA -->
+      <a
+        href="https://valencedesk.com"
+        class="venture-card fade-in"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Valence IA — Plateforme IA de due diligence, ouvre dans un nouvel onglet"
+      >
+        <p class="venture-tag">AI · PE &amp; M&A</p>
+        <p class="venture-name">Valence IA</p>
+        <p class="venture-desc">
+          Plateforme IA de due diligence pour fonds de Private Equity et deals M&amp;A.
+          Automatisation de l'analyse documentaire et des rapports.
+        </p>
+        <p class="venture-url">valencedesk.com</p>
+      </a>
+
+      <!-- HLV Advisory -->
+      <a
+        href="https://hlvadvisory.be"
+        class="venture-card fade-in"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="HLV Advisory — Business introduction & deals, ouvre dans un nouvel onglet"
+      >
+        <p class="venture-tag">Advisory · Commission</p>
+        <p class="venture-name">HLV Advisory</p>
+        <p class="venture-desc">
+          Business introduction &amp; deals à commission. Mise en relation
+          stratégique entre entrepreneurs, investisseurs et décideurs.
+        </p>
+        <p class="venture-url">hlvadvisory.be</p>
+      </a>
+
+      <!-- D'Asie Express -->
+      <a
+        href="https://maps.app.goo.gl/FfZK71Nt6rPEwxgQ6"
+        class="venture-card fade-in"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="D'Asie Express — Restaurant asiatique Bruxelles, ouvre dans un nouvel onglet"
+      >
+        <p class="venture-tag">Restauration · Bruxelles</p>
+        <p class="venture-name">D'Asie Express</p>
+        <p class="venture-desc">
+          Restaurant asiatique familial au cœur de Bruxelles.
+          Cuisine authentique, service rapide, ambiance conviviale.
+        </p>
+        <p class="venture-url">Google Maps</p>
+      </a>
+
+      <!-- Solvay Finance Club -->
+      <a
+        href="https://solvayfinanceclub.eu"
+        class="venture-card fade-in"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Solvay Finance Club — Club finance étudiant, ouvre dans un nouvel onglet"
+      >
+        <p class="venture-tag">Finance · Étudiants</p>
+        <p class="venture-name">Solvay Finance Club</p>
+        <p class="venture-desc">
+          Club finance de Solvay Brussels School. Événements, networking,
+          Finance Tours Luxembourg. Fondateur &amp; Head of Networking.
+        </p>
+        <p class="venture-url">solvayfinanceclub.eu</p>
+      </a>
+
+      <!-- Buyck Advisory Office -->
+      <a
+        href="https://advisoryoffice.eu"
+        class="venture-card fade-in"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Buyck Family Advisory Office — Stage PE & VC, ouvre dans un nouvel onglet"
+      >
+        <span class="venture-stage-badge">Stage</span>
+        <p class="venture-tag">Family Office · PE · VC</p>
+        <p class="venture-name">Buyck Advisory Office</p>
+        <p class="venture-desc">
+          Stage au sein du family advisory office Buyck. Exposition aux
+          stratégies PE, Private Debt, Real Estate et Venture Capital.
+        </p>
+        <p class="venture-url">advisoryoffice.eu</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ CONTACT -->
+<section id="contact" aria-label="Contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Me Contacter</h2>
+
+    <div class="contact-grid">
+
+      <a
+        href="mailto:henri@hlvadvisory.be"
+        class="contact-link"
+        aria-label="Envoyer un email à henri@hlvadvisory.be"
+      >
+        <div class="contact-icon icon-mail" aria-hidden="true"></div>
+        <div class="contact-info">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">henri@hlvadvisory.be</span>
+        </div>
+      </a>
+
+      <a
+        href="https://linkedin.com/in/henri-lu-vinh-4a45ab209"
+        class="contact-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Profil LinkedIn de Henri Lu Vinh, ouvre dans un nouvel onglet"
+      >
+        <div class="contact-icon icon-li" aria-hidden="true"></div>
+        <div class="contact-info">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">henri-lu-vinh</span>
+        </div>
+      </a>
+
+      <a
+        href="https://instagram.com/henriluvinh"
+        class="contact-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram personnel @henriluvinh, ouvre dans un nouvel onglet"
+      >
+        <div class="contact-icon icon-ig" aria-hidden="true"></div>
+        <div class="contact-info">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@henriluvinh</span>
+        </div>
+      </a>
+
+      <a
+        href="https://instagram.com/d.asie.express"
+        class="contact-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram D'Asie Express @d.asie.express, ouvre dans un nouvel onglet"
+      >
+        <div class="contact-icon icon-ig" aria-hidden="true"></div>
+        <div class="contact-info">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@d.asie.express</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ RESSOURCES FINANCE -->
+<section id="ressources" aria-label="Ressources finance pour lycéens">
+  <div class="container">
+    <p class="section-label">Ressources</p>
+    <h2 class="section-title">Pour débuter en finance</h2>
+    <p class="accordion-intro">
+      Sélection personnelle pour lycéens &amp; étudiants qui souhaitent comprendre
+      les marchés, l'investissement et le monde de la finance.
+    </p>
+
+    <div class="accordion" role="list">
+
+      <div class="accordion-item" role="listitem">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="acc-body-1"
+          id="acc-btn-1"
+        >
+          <span>
+            <span class="acc-name">Investopedia</span>
+            <span class="acc-tag">Bases &amp; Dictionnaire</span>
+          </span>
+          <span class="acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="acc-body-1" role="region" aria-labelledby="acc-btn-1">
+          <div class="accordion-content">
+            <a href="https://www.investopedia.com" target="_blank" rel="noopener noreferrer" class="res-link" aria-label="Investopedia — dictionnaire financier, ouvre dans un nouvel onglet">investopedia.com — Le dictionnaire de référence en finance</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" role="listitem">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="acc-body-2"
+          id="acc-btn-2"
+        >
+          <span>
+            <span class="acc-name">Khan Academy Finance</span>
+            <span class="acc-tag">Cours gratuits</span>
+          </span>
+          <span class="acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="acc-body-2" role="region" aria-labelledby="acc-btn-2">
+          <div class="accordion-content">
+            <a href="https://www.khanacademy.org/economics-finance-domain" target="_blank" rel="noopener noreferrer" class="res-link" aria-label="Khan Academy Finance — cours gratuits, ouvre dans un nouvel onglet">khanacademy.org — Cours vidéo gratuits, du débutant à l'avancé</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" role="listitem">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="acc-body-3"
+          id="acc-btn-3"
+        >
+          <span>
+            <span class="acc-name">Yahoo Finance</span>
+            <span class="acc-tag">Marchés temps réel</span>
+          </span>
+          <span class="acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="acc-body-3" role="region" aria-labelledby="acc-btn-3">
+          <div class="accordion-content">
+            <a href="https://finance.yahoo.com" target="_blank" rel="noopener noreferrer" class="res-link" aria-label="Yahoo Finance — marchés en temps réel, ouvre dans un nouvel onglet">finance.yahoo.com — Cours en temps réel, actualités &amp; portefeuilles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" role="listitem">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="acc-body-4"
+          id="acc-btn-4"
+        >
+          <span>
+            <span class="acc-name">Morningstar</span>
+            <span class="acc-tag">Analyse fonds &amp; actions</span>
+          </span>
+          <span class="acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="acc-body-4" role="region" aria-labelledby="acc-btn-4">
+          <div class="accordion-content">
+            <a href="https://www.morningstar.com" target="_blank" rel="noopener noreferrer" class="res-link" aria-label="Morningstar — analyse de fonds et actions, ouvre dans un nouvel onglet">morningstar.com — Analyse indépendante de fonds, ETF &amp; actions</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" role="listitem">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="acc-body-5"
+          id="acc-btn-5"
+        >
+          <span>
+            <span class="acc-name">CFA Institute</span>
+            <span class="acc-tag">Référence mondiale</span>
+          </span>
+          <span class="acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="acc-body-5" role="region" aria-labelledby="acc-btn-5">
+          <div class="accordion-content">
+            <a href="https://www.cfainstitute.org" target="_blank" rel="noopener noreferrer" class="res-link" aria-label="CFA Institute — certification finance internationale, ouvre dans un nouvel onglet">cfainstitute.org — La certification finance la plus reconnue mondialement</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" role="listitem">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="acc-body-6"
+          id="acc-btn-6"
+        >
+          <span>
+            <span class="acc-name">Solvay Finance Club</span>
+            <span class="acc-tag">Événements &amp; Réseau</span>
+          </span>
+          <span class="acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-body" id="acc-body-6" role="region" aria-labelledby="acc-btn-6">
+          <div class="accordion-content">
+            <a href="https://solvayfinanceclub.eu" target="_blank" rel="noopener noreferrer" class="res-link" aria-label="Solvay Finance Club — events et networking, ouvre dans un nouvel onglet">solvayfinanceclub.eu — Événements, conférences &amp; Finance Tours</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FOOTER -->
+<footer aria-label="Pied de page">
+  <div class="container">
+    <div class="footer-mono" aria-hidden="true">HLV</div>
+    <p class="footer-loc">Brussels · BE</p>
+    <p class="footer-copy">&copy; 2025 Henri Lu Vinh — Tous droits réservés</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════ JAVASCRIPT -->
+<script>
+  /* ── CURSOR ─────────────────────────────────────────────── */
+  (function () {
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0;
+    let curX = 0, curY = 0;
+    let raf;
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function loop() {
+      curX += (mouseX - curX) * 0.18;
+      curY += (mouseY - curY) * 0.18;
+      cursor.style.left = curX + 'px';
+      cursor.style.top  = curY + 'px';
+      raf = requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Hover effect on interactive elements
+    const hoverEls = document.querySelectorAll('a, button');
+    hoverEls.forEach(function (el) {
+      el.addEventListener('mouseenter', function () { cursor.classList.add('hover'); });
+      el.addEventListener('mouseleave', function () { cursor.classList.remove('hover'); });
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; });
+  })();
+
+  /* ── TAGLINE ROTATOR ────────────────────────────────────── */
+  (function () {
+    var taglines = [
+      'Founder · Risk &amp; Compliance',
+      'Student · Solvay Brussels',
+      'Builder · AI &amp; Finance',
+      'CFA Candidate'
+    ];
+    var el = document.getElementById('tagline');
+    var idx = 0;
+
+    function rotate() {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(8px)';
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+      setTimeout(function () {
+        idx = (idx + 1) % taglines.length;
+        el.innerHTML = taglines[idx];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 420);
+    }
+
+    setInterval(rotate, 2800);
+  })();
+
+  /* ── ACCORDION ──────────────────────────────────────────── */
+  (function () {
+    var triggers = document.querySelectorAll('.accordion-trigger');
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        var bodyId = trigger.getAttribute('aria-controls');
+        var body = document.getElementById(bodyId);
+
+        // Close all others
+        triggers.forEach(function (t) {
+          if (t !== trigger) {
+            t.setAttribute('aria-expanded', 'false');
+            var b = document.getElementById(t.getAttribute('aria-controls'));
+            b.classList.remove('open');
+          }
+        });
+
+        // Toggle this one
+        trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        body.classList.toggle('open', !isOpen);
+      });
+    });
+  })();
+
+  /* ── SCROLL REVEAL (IntersectionObserver) ───────────────── */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+
+    var els = document.querySelectorAll('.venture-card, .about-badge, .contact-link');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(function (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  })();
+</script>
+
+</body>
+</html>
